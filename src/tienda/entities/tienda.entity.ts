@@ -7,7 +7,7 @@ export class Tienda {
   id: string;
 
   @Column({ type: 'text' })
-  storeName: string;
+  store: string;
 
   @Column({ type: 'text' })
   direction: string;
@@ -18,13 +18,12 @@ export class Tienda {
   @Column({ type: 'text' })
   category: string;
 
-  @Column ({ type: 'numeric' })
+  @Column({ type: 'numeric' })
   stock: number;
 
   //Relacion de uno a muchos
   //Un producto puede tener muchas imagenes
   @OneToMany(() => TiendaImage, (tiendaImage) => tiendaImage.tienda, {
-    cascade: true,
   })
   images?: TiendaImage[];
 }

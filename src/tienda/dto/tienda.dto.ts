@@ -4,14 +4,12 @@ import {
   IsNumber,
   IsOptional,
   IsString,
-  MinLength,
 } from 'class-validator';
 
 export class CreateTiendaDto {
   @IsString()
   @IsNotEmpty()
-  @MinLength(10)
-  storeName: string;
+  store: string;
 
   @IsString()
   @IsNotEmpty()

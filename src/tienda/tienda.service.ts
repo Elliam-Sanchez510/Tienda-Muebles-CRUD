@@ -12,15 +12,8 @@ export class TiendaService {
     private readonly tiendaRepository: Repository<Tienda>,
     @InjectRepository(TiendaImage)
     private readonly imageRepository: Repository<TiendaImage>,
-  ) {}
+  ) { }
 
-  //Metodo para crear un producto
-  /*   async create(productoDto: CreateProductDto) {
-    const product = this.tiendaRepository.create(productoDto);
-    await this.tiendaRepository.save(product);
-
-    return product;
-  } */
   async create(tiendaoDto: CreateTiendaDto) {
     const { images = [], ...detalleTienda } = tiendaoDto;
     const tienda = await this.tiendaRepository.create({
@@ -35,7 +28,7 @@ export class TiendaService {
 
   //Metodo para visualizar todos los productos
   findAll() {
-    return this.tiendaRepository.find();
+    return this.tiendaRepository.find({relations:{images: true}});
   }
 
   //Metodo para visualizar un producto especifico
@@ -50,16 +43,6 @@ export class TiendaService {
     return 'Producto eliminado satisfactoriamente';
   }
 
-  //Actualizar un producto especifico
-  // async update(id: string, cambios: CreateProductDto) {
-  //   const findProduct = await this.findOne(id);
-  //   const updatedProducto = await this.tiendaRepository.merge(
-  //     findProduct,
-  //     cambios,
-  //   );
-
-  //   return this.tiendaRepository.save(updatedProducto);
-  // }
   async update(id: string, cambios: CreateTiendaDto) {
     const tienda = await this.tiendaRepository.preload({
       id: id,

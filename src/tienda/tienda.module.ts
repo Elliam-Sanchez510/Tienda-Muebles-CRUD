@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Tienda } from './entities/tienda.entity';
 import { TiendaController } from './tienda.controller';
-import {  TiendaService } from './tienda.service';
+import { TiendaService } from './tienda.service';
 import { TiendaImage } from './entities/tienda-image.entity';
 
 @Module({
@@ -10,4 +10,4 @@ import { TiendaImage } from './entities/tienda-image.entity';
   controllers: [TiendaController],
   providers: [TiendaService],
 })
-export class TiendaModule {}
+export class TiendaModule { }
